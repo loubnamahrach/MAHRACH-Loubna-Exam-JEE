@@ -11,8 +11,8 @@
         <relativePath/>
     </parent>
 
-    <groupId>mahrach.loubna</groupId>
-    <artifactId>vehicle-rental</artifactId>
+    <groupId>com.mahrach.loubna</groupId>
+    <artifactId>vehicle-rental-loubna</artifactId>
     <version>1.0.0</version>
     <name>MAHRACH-Loubna-Exam-JEE</name>
     <description>Vehicle Rental Management System</description>

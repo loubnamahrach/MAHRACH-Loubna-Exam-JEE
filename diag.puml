@@ -1,0 +1,58 @@
+@startuml
+class com.mahrach.loubna.vehiclerental.entities.Moto {
+- Integer cylindree
+- TypeMoto typeMoto
+- Boolean casqueInclus
+}
+
+class com.mahrach.loubna.vehiclerental.entities.Voiture {
+- Integer nombrePortes
+- TypeCarburant typeCarburant
+- BoiteVitesse boiteVitesse
+}
+
+class com.mahrach.loubna.vehiclerental.entities.Vehicule {
+- Long id
+- String marque
+- String modele
+- String matricule
+- Double prixParJour
+- LocalDate dateMiseEnService
+- StatutVehicule statut
+- Agence agence
+- List<Location> locations
+}
+
+class com.mahrach.loubna.vehiclerental.entities.Agence {
+- Long id
+- String nom
+- String adresse
+- String ville
+- String telephone
+- List<Vehicule> vehicules
+}
+
+class com.mahrach.loubna.vehiclerental.entities.Location {
+- Long id
+- LocalDate dateDebut
+- LocalDate dateFin
+- Double prixTotal
+- Vehicule vehicule
+}
+
+class com.mahrach.loubna.vehiclerental.entities.Utilisateur {
+- Long id
+- String username
+- String motdepasse
+- String email
+- String nom
+- String prenom
+- Role role
+- Boolean enabled
+}
+
+
+
+com.mahrach.loubna.vehiclerental.entities.Vehicule <|-- com.mahrach.loubna.vehiclerental.entities.Moto
+com.mahrach.loubna.vehiclerental.entities.Vehicule <|-- com.mahrach.loubna.vehiclerental.entities.Voiture
+@enduml
