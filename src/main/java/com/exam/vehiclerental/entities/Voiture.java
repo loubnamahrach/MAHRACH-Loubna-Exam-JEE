@@ -11,6 +11,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
+@EqualsAndHashCode(callSuper = false)
 @DiscriminatorValue("VOITURE")
 public class Voiture extends Vehicule {
     private Integer nombrePortes;
@@ -20,4 +21,6 @@ public class Voiture extends Vehicule {
     
     @Enumerated(EnumType.STRING)
     private BoiteVitesse boiteVitesse;
+    
+
 }

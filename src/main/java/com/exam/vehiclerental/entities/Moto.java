@@ -10,6 +10,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
+@EqualsAndHashCode(callSuper = false)
 @DiscriminatorValue("MOTO")
 public class Moto extends Vehicule {
     private Integer cylindree;
