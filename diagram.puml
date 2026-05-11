@@ -1,0 +1,47 @@
+@startuml
+class com.exam.vehiclerental.entities.Moto {
+- Integer cylindree
+- TypeMoto typeMoto
+- Boolean casqueInclus
+}
+
+class com.exam.vehiclerental.entities.Voiture {
+- Integer nombrePortes
+- TypeCarburant typeCarburant
+- BoiteVitesse boiteVitesse
+}
+
+class com.exam.vehiclerental.entities.Location {
+- Long id
+- LocalDate dateDebut
+- LocalDate dateFin
+- Double prixTotal
+- Vehicule vehicule
+}
+
+class com.exam.vehiclerental.entities.Vehicule {
+- Long id
+- String marque
+- String modele
+- String matricule
+- Double prixParJour
+- LocalDate dateMiseEnService
+- StatutVehicule statut
+- Agence agence
+- List<Location> locations
+}
+
+class com.exam.vehiclerental.entities.Agence {
+- Long id
+- String nom
+- String adresse
+- String ville
+- String telephone
+- List<Vehicule> vehicules
+}
+
+
+
+com.exam.vehiclerental.entities.Vehicule <|-- com.exam.vehiclerental.entities.Moto
+com.exam.vehiclerental.entities.Vehicule <|-- com.exam.vehiclerental.entities.Voiture
+@enduml
