@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="header">
+    <h2>Liste des Véhicules</h2>
+    <button class="btn btn-secondary" (click)="back()">Retour</button>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">
+    {{ error }}
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    Chargement des véhicules...
+  </div>
+
+  <div *ngIf="!loading && vehicules.length === 0" class="no-data">
+    Aucun véhicule disponible
+  </div>
+
+  <div *ngIf="!loading && vehicules.length > 0" class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Marque</th>
+          <th>Modèle</th>
+          <th>Matricule</th>
+          <th>Prix/Jour</th>
+          <th>Statut</th>
+          <th>Agence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vehicule of vehicules">
+          <td>{{ vehicule.marque }}</td>
+          <td>{{ vehicule.modele }}</td>
+          <td>{{ vehicule.matricule }}</td>
+          <td>{{ vehicule.prixParJour | currency:'EUR' }}</td>
+          <td>
+            <span [class]="'badge ' + getStatusBadge(vehicule.statut)">
+              {{ vehicule.statut }}
+            </span>
+          </td>
+          <td>{{ vehicule.agenceNom }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

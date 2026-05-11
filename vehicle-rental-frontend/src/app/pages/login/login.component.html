@@ -1,0 +1,55 @@
+<div class="login-container">
+  <div class="login-box">
+    <h1>Connexion - Système de Location de Véhicules</h1>
+    
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+      <div class="form-group">
+        <label for="username">Nom d'utilisateur:</label>
+        <input 
+          type="text" 
+          id="username" 
+          formControlName="username"
+          class="form-control"
+          [class.is-invalid]="submitted && f['username'].errors"
+        />
+        <div class="invalid-feedback" *ngIf="submitted && f['username'].errors">
+          Le nom d'utilisateur est requis
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="motdepasse">Mot de passe:</label>
+        <input 
+          type="password" 
+          id="motdepasse" 
+          formControlName="motdepasse"
+          class="form-control"
+          [class.is-invalid]="submitted && f['motdepasse'].errors"
+        />
+        <div class="invalid-feedback" *ngIf="submitted && f['motdepasse'].errors">
+          Le mot de passe est requis
+        </div>
+      </div>
+
+      <div class="error-message" *ngIf="error">
+        {{ error }}
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="loading">
+        <span *ngIf="loading">Connexion en cours...</span>
+        <span *ngIf="!loading">Se connecter</span>
+      </button>
+
+      <div class="demo-credentials">
+        <h3>Identifiants de démonstration:</h3>
+        <p><strong>Admin:</strong> admin / admin123</p>
+        <p><strong>Employé:</strong> employe / employe123</p>
+        <p><strong>Client:</strong> client / client123</p>
+      </div>
+
+      <p class="register-link">
+        Pas encore de compte? <a href="/register">S'enregistrer</a>
+      </p>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<div class="dashboard-container">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <h1>Système de Location de Véhicules</h1>
+    </div>
+    <div class="navbar-user">
+      <span>{{ currentUser?.username }} ({{ currentUser?.role }})</span>
+      <button class="btn-logout" (click)="logout()">Déconnexion</button>
+    </div>
+  </nav>
+
+  <div class="dashboard-content">
+    <h2>Bienvenue, {{ currentUser?.username }}!</h2>
+    <p>Vous êtes connecté en tant que: <strong>{{ currentUser?.role }}</strong></p>
+
+    <div class="menu-grid">
+      <!-- Commun à tous les utilisateurs -->
+      <div class="menu-card">
+        <h3>🚗 Consulter les Véhicules</h3>
+        <p>Voir la liste complète des véhicules disponibles</p>
+        <button class="btn btn-primary" (click)="navigateTo('/vehicules')">
+          Accéder
+        </button>
+      </div>
+
+      <!-- Pour les clients -->
+      <div class="menu-card" *ngIf="isClient()">
+        <h3>📋 Mes Locations</h3>
+        <p>Consulter et gérer mes locations de véhicules</p>
+        <button class="btn btn-primary" (click)="navigateTo('/locations')">
+          Accéder
+        </button>
+      </div>
+
+      <!-- Pour les employés et admins -->
+      <div class="menu-card" *ngIf="isEmploye() || isAdmin()">
+        <h3>📌 Gestion des Locations</h3>
+        <p>Gérer toutes les locations de la plateforme</p>
+        <button class="btn btn-primary" (click)="navigateTo('/locations')">
+          Accéder
+        </button>
+      </div>
+
+      <!-- Pour les employés et admins -->
+      <div class="menu-card" *ngIf="isEmploye() || isAdmin()">
+        <h3>🏢 Gestion des Agences</h3>
+        <p>Gérer les agences et leurs informations</p>
+        <button class="btn btn-primary" (click)="navigateTo('/agences')">
+          Accéder
+        </button>
+      </div>
+
+      <!-- Pour les employés et admins -->
+      <div class="menu-card" *ngIf="isEmploye() || isAdmin()">
+        <h3>🔧 Gestion des Véhicules</h3>
+        <p>Ajouter, modifier ou supprimer des véhicules</p>
+        <button class="btn btn-primary" (click)="navigateTo('/gestion-vehicules')">
+          Accéder
+        </button>
+      </div>
+
+      <!-- Pour les admins uniquement -->
+      <div class="menu-card" *ngIf="isAdmin()">
+        <h3>👥 Gestion des Utilisateurs</h3>
+        <p>Gérer les comptes utilisateurs et leurs rôles</p>
+        <button class="btn btn-primary" disabled>
+          Bientôt disponible
+        </button>
+      </div>
+    </div>
+
+    <div class="info-section">
+      <h3>ℹ️ Informations sur les Rôles</h3>
+      <ul>
+        <li><strong>ROLE_CLIENT:</strong> Peut consulter les véhicules et gérer ses propres locations</li>
+        <li><strong>ROLE_EMPLOYE:</strong> Peut gérer les véhicules, les locations et les agences</li>
+        <li><strong>ROLE_ADMIN:</strong> Accès complet à toutes les fonctionnalités</li>
+      </ul>
+    </div>
+  </div>
+</div>
